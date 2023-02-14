@@ -6,14 +6,18 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 def basic():
-    f = open("test.txt", "a")
     response = openai.Completion.create(
     model="text-davinci-003",
-    prompt=generate_prompt,
+    prompt=generate_prompt(),
     temperature=0.75,
+    temperature=0.8,
+    max_tokens=300,
 )
-    f.write(response)
+    result = response.choices[0].text
+    f = open("test.txt", "a")
+    f.write(result)
     f.close()
+    return result
 
 def generate_prompt():
     return """Generate a fictional fantasy alchemy ingredient based on the real world plants, animals, fungi or minerals. 
