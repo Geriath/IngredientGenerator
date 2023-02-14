@@ -12,7 +12,7 @@ def basic():
     temperature=0.8,
     max_tokens=500,
 )
-    result = response.choices[0].text
+    result = response.choices[0].text[2:]
     splitresult = result.splitlines()
     splitstring = splitresult[0]
     bonk = len(splitstring)
@@ -30,7 +30,8 @@ Description: (What it looks like)
 Element: (Fire, Water, Earth, Air or other)
 Location: (Where can it be found) 
 Obtaining Method: (What is the method of obtaining the ingredient)
-Rarity: (How rare it is) 
+Rarity: (How rare or common it is) 
 Uses: (What could it be used for in fantasy alchemy)"""
 
-basic()
+for x in range(7):
+    basic()
